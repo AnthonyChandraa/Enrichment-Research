@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name', 30);
             $table->date('date_of_birth');
             $table->string('bio');
-            $table->string('profile_url');
+            $table->string('profile_url')->default('assets/default-pp.png');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')
