@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('multiple_choice_options', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->uuid('question_id');
+            $table->string('content', 30);
             $table->timestamps();
+
+            $table->foreign('question_id')->references('id')->on('questions')
+                ->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('multiple_choice_options');
     }
 };
