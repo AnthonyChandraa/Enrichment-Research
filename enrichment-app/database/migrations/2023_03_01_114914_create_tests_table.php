@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('timelimit');
             $table->boolean('is_active');
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses')
+                ->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('test_type_id')->references('id')->on('test_types');
         });
     }
 

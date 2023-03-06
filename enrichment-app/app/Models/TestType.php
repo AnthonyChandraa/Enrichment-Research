@@ -13,6 +13,4 @@ class TestType extends Model
     public function tests(){
         return $this->hasMany(Test::class);
     }
-
-
 }
