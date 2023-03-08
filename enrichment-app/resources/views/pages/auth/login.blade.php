@@ -1,8 +1,7 @@
 @extends('template.template')
 
-@section('title', 'E-Learning | Login')
+@section('title', env('APP_NAME').' | Login')
 
 @section('content')
-
-
+    <x-auth.login-form/>
 @endsection

@@ -13,18 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_details', function (Blueprint $table) {
-            $table->uuid('user_id')->primary();
-            $table->string('first_name', 30);
-            $table->string('last_name', 30);
-            $table->date('date_of_birth')->nullable();
-            $table->string('bio')->nullable();
-            $table->string('profile_url')->default('assets/default-pp.png');
+        Schema::create('user_links', function (Blueprint $table) {
+            $table->uuid('user_id');
+            $table->string('url');
+            $table->timestamp('expires_at');
             $table->timestamps();
 
+            $table->primary(['user_id', 'url']);
             $table->foreign('user_id')->references('id')->on('users')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_details');
+        Schema::dropIfExists('user_links');
     }
 };
