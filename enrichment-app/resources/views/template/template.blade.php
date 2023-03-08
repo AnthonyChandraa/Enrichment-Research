@@ -5,13 +5,28 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
     @notifyCss
+    @vite('resources/css/app.css')
+    <style>
+        .notify {
+            z-index: 1000000;
+            align-items: end;
+        }
+    </style>
 </head>
-<body>
-    @include('notify::messages')
-    @yield('content')
-    <x:notify-messages />
-    @notifyJs
+<body x-data="{
+    openNavDropdown: false,
+    toggleNavDropdown() {this.openNavDropdown = !this.openNavDropdown},
+    openNavDropdownMobile: false,
+    toggleNavDropdownMobile() {this.openNavDropdownMobile = !this.openNavDropdownMobile},
+}">
+    <div class="min-h-screen relative w-full flex flex-col justify-between">
+        <x-navbar/>
+        @include('notify::components.notify')
+        @yield('content')
+        @notifyJs
+        @vite('resources/js/app.js')
+    </div>
 </body>
 </html>

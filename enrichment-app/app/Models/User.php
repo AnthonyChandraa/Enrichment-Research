@@ -64,5 +64,7 @@ class User extends Authenticatable
         return $this->hasOne(Lecturer::class);
     }
 
-
+    public function userLinks(){
+        return $this->hasMany(UserLink::class);
+    }
 }
