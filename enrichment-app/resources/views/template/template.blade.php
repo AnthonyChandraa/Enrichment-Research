@@ -20,6 +20,8 @@
     toggleNavDropdown() {this.openNavDropdown = !this.openNavDropdown},
     openNavDropdownMobile: false,
     toggleNavDropdownMobile() {this.openNavDropdownMobile = !this.openNavDropdownMobile},
+    openEditUserModal: false,
+    toggleEditUserModal() {this.openEditUserModal = !this.openEditUserModal}
 }">
     <div class="min-h-screen relative w-full flex flex-col justify-between">
         <x-navbar/>

@@ -22,24 +22,28 @@ class UserSeeder extends Seeder
                 'id' => Str::uuid(),
                 'email' => 'student1@email.com',
                 'password' => Hash::make('student123'),
+                'email_verified_at' => now(),
                 'created_at' => now()
             ],
             [
                 'id' => Str::uuid(),
                 'email' => 'admin1@email.com',
                 'password' => Hash::make('admin123'),
+                'email_verified_at' => now(),
                 'created_at' => now()
             ],
             [
                 'id' => Str::uuid(),
                 'email' => 'lecturer1@email.com',
                 'password' => Hash::make('lecturer123'),
+                'email_verified_at' => now(),
                 'created_at' => now()
             ],
             [
                 'id' => Str::uuid(),
                 'email' => 'allrole1@email.com',
                 'password' => Hash::make('allrole123'),
+                'email_verified_at' => now(),
                 'created_at' => now()
             ]
         ]);

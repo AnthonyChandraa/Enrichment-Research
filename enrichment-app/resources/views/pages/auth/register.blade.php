@@ -1,6 +1,6 @@
 @extends('template.template')
 
-@section('title', 'E-Learning | Register')
+@section('title', env('APP_NAME'). ' | Register')
 
 @section('content')
     <x-auth.register-form/>

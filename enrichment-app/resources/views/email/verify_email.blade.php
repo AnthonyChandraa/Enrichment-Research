@@ -4,7 +4,7 @@
 Please click the button below to verify your email address.
 
 <x-mail::button :url="$url">
-Button Text
+Verify Email
 </x-mail::button>
 
 This link is only valid for 24 hours.

@@ -1,5 +1,5 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="bg-binus-blue fixed w-full shadow-lg">
+<nav class="bg-binus-blue absolute top-0 w-full shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -32,16 +32,29 @@
                 </div>
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
                     <!-- Active: "bg-binus-dark-blue text-white", Default: "text-white hover:bg-binus-dark-blue" -->
-                    <a href="{{route('index_home')}}" class="bg-binus-darker-blue text-white px-3 py-2 rounded-md
-                    text-sm font-medium"
+                    <a href="{{route('index_home')}}" class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                    == 'index_home' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue"}} px-3 py-2
+                    rounded-md text-sm font-medium"
                        aria-current="page">Home</a>
 
-                    <a href="#" class="text-white hover:bg-binus-dark-blue px-3 py-2 rounded-md text-sm
+                    <a href="{{route('index_e_learning')}}"
+                       class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                    == 'index_e_learning' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue"}}
+                    px-3
+                    py-2 rounded-md text-sm
                     font-medium">E-Learning</a>
 
-                    <a href="#" class="text-white hover:bg-binus-dark-blue px-3 py-2 rounded-md text-sm
+                    <a href="{{route('index_journal')}}" class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                    == 'index_journal' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue"}}
+                    px-3 py-2 rounded-md text-sm
                     font-medium">Journals</a>
 
+                    @can('isAdmin')
+                        <a href="{{route('index_manage_user')}}"
+                        class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                        == 'index_manage_user' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue"}}
+                        px-3 py-2 rounded-md text-sm font-medium">Manage User</a>
+                    @endcan
 
                 </div>
             </div>
@@ -81,7 +94,9 @@
                                 <button @click="toggleNavDropdown()" type="button" class="bg-gray-800 flex text-sm rounded-full
                             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
-                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=nkXPoOrIl0&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    <img class="h-8 w-8 rounded-full" src="{{asset('storage/'.\Illuminate\Support\Facades\Auth::user()
+                                    ->userDetail->profile_url)}}"
+                                         alt="">
                                 </button>
                             </div>
 
@@ -96,11 +111,9 @@
                                 To: "transform opacity-0 scale-95"
                             -->
                             <div x-show="openNavDropdown" x-transition.scale class="origin-top-right absolute right-0 mt-2
-                        w-48
-                        rounded-md
-                        shadow-lg py-1
-                        bg-white
-                        ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-30" role="menu"
+                                 aria-orientation="vertical"
+                                 aria-labelledby="user-menu-button" tabindex="-1">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
 
@@ -123,14 +136,20 @@
     <div x-show="openNavDropdownMobile" x-transition class="md:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="{{route('index_home')}}" class="bg-binus-darker-blue text-white block px-3 py-2 rounded-md
+            <a href="{{route('index_home')}}" class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                    == 'index_home' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue "}}
+                    block px-3 py-2 rounded-md
             text-base font-medium"
                aria-current="page">Home</a>
 
-            <a href="#" class="text-white hover:bg-binus-dark-blue block px-3 py-2 rounded-md text-base
+            <a href="{{route('index_e_learning')}}" class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                    == 'index_e_learning' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue
+                    "}} block px-3 py-2 rounded-md text-base
             font-medium">E-Learning</a>
 
-            <a href="#" class="text-white hover:bg-binus-dark-blue block px-3 py-2 rounded-md text-base
+            <a href="{{route('index_journal')}}" class="{{\Illuminate\Support\Facades\Route::currentRouteName()
+                    == 'index_journal' ? "bg-binus-darker-blue text-white" : "text-white hover:bg-binus-dark-blue "}}
+                    block px-3 py-2 rounded-md text-base
             font-medium">Journals</a>
         </div>
         @if(\Illuminate\Support\Facades\Auth::check())
