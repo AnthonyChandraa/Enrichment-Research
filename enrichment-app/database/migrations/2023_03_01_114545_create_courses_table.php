@@ -20,9 +20,12 @@ return new class extends Migration
             $table->string('image_url')->nullable();
             $table->string('description')->nullable();
             $table->boolean('is_active')->default(false);
+            $table->uuid('course_code_id');
             $table->timestamps();
 
             $table->foreign('lecturer_id')->references('id')->on('lecturers')
+                ->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('course_code_id')->references('id')->on('course_codes')
                 ->cascadeOnUpdate()->cascadeOnDelete();
         });
     }

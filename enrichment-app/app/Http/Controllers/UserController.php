@@ -7,6 +7,7 @@ use App\Mail\VerifyEmail;
 use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserLink;
+use App\Models\UserLinkType;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -88,10 +89,13 @@ class UserController extends Controller
         $url = env('APP_URL'). "/auth/verify-email/" . $randomStr;
         $expire = now()->addHours(24);
 
+        $emailVerificationUserLinkID = UserLinkType::query()->where('name', '=', 'Email Verification')->first()->id;
+
         $userLink = new UserLink();
         $userLink->user_id = $newUUID;
         $userLink->url = $randomStr;
         $userLink->expires_at = $expire;
+        $userLink->user_link_type_id = $emailVerificationUserLinkID;
         $userLink->created_at = now();
         $userLink->save();
 
@@ -123,10 +127,13 @@ class UserController extends Controller
 
             $url = env('APP_URL')."/auth/reset-password/".$randomStr;
 
+            $resetPasswordUserLinkID = UserLinkType::query()->where('name', '=', 'Reset Password')->first()->id;
+
             $userLink = new UserLink();
             $userLink->user_id = $search->id;
             $userLink->url = $randomStr;
             $userLink->expires_at = $expire;
+            $userLink->user_link_type_id = $resetPasswordUserLinkID;
             $userLink->created_at = now();
             $userLink->save();
 
