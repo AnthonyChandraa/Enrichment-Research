@@ -45,6 +45,13 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('allrole123'),
                 'email_verified_at' => now(),
                 'created_at' => now()
+            ],
+            [
+                'id' => Str::uuid(),
+                'email' => 'external1@email.com',
+                'password' => Hash::make('external123'),
+                'email_verified_at' => now(),
+                'created_at' => now()
             ]
         ]);
     }

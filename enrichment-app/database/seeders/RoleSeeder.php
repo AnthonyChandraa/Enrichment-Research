@@ -25,14 +25,20 @@ class RoleSeeder extends Seeder
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Lecturer',
+                'name' => 'External Administrator',
                 'access_level' => 2,
                 'created_at' => now()
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Student',
+                'name' => 'Lecturer',
                 'access_level' => 3,
+                'created_at' => now()
+            ],
+            [
+                'id' => Str::uuid(),
+                'name' => 'Student',
+                'access_level' => 4,
                 'created_at' => now()
             ],
         ]);
