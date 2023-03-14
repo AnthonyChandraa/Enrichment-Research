@@ -10,6 +10,7 @@ class EssayKey extends Model
     use HasFactory;
     protected $keyType = 'string';
     protected $primaryKey = 'question_id';
+    public $incrementing = false;
 
     public function question(){
         return $this->belongsTo(Question::class);

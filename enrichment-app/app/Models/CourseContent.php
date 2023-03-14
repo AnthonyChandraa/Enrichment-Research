@@ -10,6 +10,7 @@ class CourseContent extends Model
     use HasFactory;
 
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function contentType(){
         return $this->belongsTo(ContentType::class);

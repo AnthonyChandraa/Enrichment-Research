@@ -9,6 +9,8 @@ class Topic extends Model
 {
     use HasFactory;
     protected $keyType = 'string';
+    public $incrementing = false;
+
 
     public function courseTopics(){
         return $this->hasMany(CourseTopic::class);

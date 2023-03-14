@@ -9,6 +9,7 @@ class MultipleChoiceOption extends Model
 {
     use HasFactory;
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function multipleChoiceKey(){
         return $this->hasMany(MultipleChoiceKey::class, 'choice_id');

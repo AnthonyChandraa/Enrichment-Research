@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Faculty extends Model
+class UserLinkType extends Model
 {
     use HasFactory;
+
     protected $keyType = 'string';
     public $incrementing = false;
 
-    public function departments(){
-        return $this->hasMany(Department::class);
-    }
-
-    public function university(){
-        return $this->belongsTo(University::class);
+    public function userLinks(){
+        return $this->hasMany(UserLink::class);
     }
 }

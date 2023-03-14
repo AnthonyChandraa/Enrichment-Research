@@ -10,6 +10,7 @@ class Course extends Model
     use HasFactory;
 
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function courseParticipant(){
         return $this->hasOne(CourseParticipant::class);

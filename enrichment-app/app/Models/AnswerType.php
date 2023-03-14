@@ -10,6 +10,7 @@ class AnswerType extends Model
     use HasFactory;
 
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function questions(){
         return $this->hasMany(Question::class);

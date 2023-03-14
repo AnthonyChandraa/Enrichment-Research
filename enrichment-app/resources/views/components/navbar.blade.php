@@ -110,7 +110,9 @@
                                 From: "transform opacity-100 scale-100"
                                 To: "transform opacity-0 scale-95"
                             -->
-                            <div x-show="openNavDropdown" x-transition.scale class="origin-top-right absolute right-0 mt-2
+                            <div x-show="openNavDropdown" x-transition.scale class="origin-top-right
+                            absolute
+                            right-0 mt-2
                                 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-30" role="menu"
                                  aria-orientation="vertical"
                                  aria-labelledby="user-menu-button" tabindex="-1">
@@ -133,7 +135,7 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div x-show="openNavDropdownMobile" x-transition class="md:hidden" id="mobile-menu">
+    <div x-show="openNavDropdownMobile" x-transition x-cloak class="md:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="{{route('index_home')}}" class="{{\Illuminate\Support\Facades\Route::currentRouteName()

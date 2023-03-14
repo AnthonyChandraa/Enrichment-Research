@@ -15,4 +15,8 @@ class UserLink extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function userLinkType(){
+        return $this->belongsTo(UserLinkType::class);
+    }
 }

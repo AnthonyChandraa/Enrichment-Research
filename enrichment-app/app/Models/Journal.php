@@ -9,6 +9,7 @@ class Journal extends Model
 {
     use HasFactory;
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function journalDetails(){
         return $this->hasMany(JournalDetail::class);

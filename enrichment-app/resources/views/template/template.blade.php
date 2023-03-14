@@ -13,6 +13,8 @@
             z-index: 1000000;
             align-items: end;
         }
+
+        [x-cloak] { display: none !important; }
     </style>
 </head>
 <body x-data="{
@@ -21,9 +23,10 @@
     openNavDropdownMobile: false,
     toggleNavDropdownMobile() {this.openNavDropdownMobile = !this.openNavDropdownMobile},
     openEditUserModal: false,
-    toggleEditUserModal() {this.openEditUserModal = !this.openEditUserModal}
-}">
-    <div class="min-h-screen relative w-full flex flex-col justify-between">
+    toggleEditUserModal() {this.openEditUserModal = !this.openEditUserModal},
+
+}" x-cloak>
+    <div class="min-h-screen relative w-full flex flex-col justify-between" >
         <x-navbar/>
         @include('notify::components.notify')
         @yield('content')

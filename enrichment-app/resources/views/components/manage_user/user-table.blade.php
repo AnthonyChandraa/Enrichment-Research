@@ -1,5 +1,5 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col h-full">
+<div class="flex flex-col h-full ">
     <div class="-my-2 overflow-x-auto">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -18,8 +18,8 @@
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Role
                         </th>
-                        <th colspan="3" scope="col">
-                            <div class="w-full" >
+                        <th colspan="2" scope="col">
+                            <div class="w-full">
                                 <label for="search" class="sr-only">Search</label>
                                 <div class="relative">
                                     <form action="{{route('search_user')}}" method="get" style="z-index: 0">
@@ -85,28 +85,9 @@
                                         </span>
                                         @endforeach
                                     </td>
-                                    @if($u->email_verified_at==null)
-                                        <td class="px-2 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <form action="{{route('bypass_email')}}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{$u->id}}">
-                                                <button type="submit" class="text-blue-400 hover:text-blue-600">Bypass<br>
-                                                    Verification</button>
-                                            </form>
-                                        </td>
-                                    @endif
-                                    @if($u->email_verified_at==null)
-                                        <td class="px-2 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <form action="{{route('resend_email')}}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{$u->id}}">
-                                                <button type="submit" class="text-yellow-400 hover:text-yellow-600">Resend<br>
-                                                    Email</button>
-                                            </form>
-                                        </td>
-                                    @endif
+
                                     <td class="px-2 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <button x-on:click="toggleEditUserModal()" class="text-indigo-600
+                                        <button x-on:click="idEditUserModal = '{{$u->id}}'" class="text-indigo-600
                                         hover:text-indigo-900">Edit</button>
                                     </td>
                                     @if($u->id != \Illuminate\Support\Facades\Auth::user()->id)

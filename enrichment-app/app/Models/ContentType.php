@@ -10,6 +10,7 @@ class ContentType extends Model
     use HasFactory;
 
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function CourseContents(){
         return $this->hasMany(CourseContent::class);

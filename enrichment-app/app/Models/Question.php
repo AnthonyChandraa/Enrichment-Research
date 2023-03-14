@@ -9,6 +9,7 @@ class Question extends Model
 {
     use HasFactory;
     protected $keyType = 'string';
+    public $incrementing = false;
 
     public function multipleChoiceOption(){
         return $this->hasMany(MultipleChoiceOption::class);
